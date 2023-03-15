@@ -46,15 +46,10 @@
       Convert
     </v-btn>
 
-    <!-- <iframe src="https://embed.lottiefiles.com/animation/96438"></iframe> -->
-
-    <div class="currency-converter-result-area mt-6">
-      <p class="currency-converter-resume">{{ currencyResume }}</p>
-
-      <p class="currency-converter-result">
-        {{ currencyResult }}
-      </p>
-    </div>
+    <CurrencyDisplay
+      :currencyResume="currencyResume"
+      :currencyResult="currencyResult"
+    />
   </div>
 </template>
 
@@ -62,6 +57,8 @@
 import { ref, onMounted, computed } from "vue";
 import axios from "axios";
 import endpoint from "./endpoint";
+
+import CurrencyDisplay from "./components/CurrencyDisplay.vue";
 
 const listQuotes = ref<string[]>([]);
 const currencyResult = ref<string>("");
@@ -174,22 +171,5 @@ label {
 
 .currency-converter-input {
   width: -webkit-fill-available;
-}
-
-.currency-converter-result-area {
-  text-align: center;
-}
-
-.currency-converter-resume {
-  color: #2f3542;
-  font-size: 14px;
-}
-
-.currency-converter-result {
-  color: #2e3647;
-  font-size: 32px;
-  font-weight: 700;
-
-  margin-top: 20px;
 }
 </style>
